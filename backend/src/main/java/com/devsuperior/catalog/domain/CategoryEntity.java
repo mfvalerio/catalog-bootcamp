@@ -1,21 +1,24 @@
-package com.devsuperior.catalog.entities;
+package com.devsuperior.catalog.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category implements Serializable {
+@Entity
+@Table(name = "category")
+public class CategoryEntity implements Serializable {
     private static final Long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
