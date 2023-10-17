@@ -1,7 +1,7 @@
 package com.devsuperior.catalog.controller;
 
-import com.devsuperior.catalog.controller.service.CategoryService;
-import com.devsuperior.catalog.domain.CategoryEntity;
+import com.devsuperior.catalog.dto.CategoryDTO;
+import com.devsuperior.catalog.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ public class CategoryController {
     private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<CategoryEntity>> findAll() {
+    public ResponseEntity<List<CategoryDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 }
