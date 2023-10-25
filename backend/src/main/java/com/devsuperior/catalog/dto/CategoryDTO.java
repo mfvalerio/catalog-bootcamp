@@ -1,6 +1,6 @@
 package com.devsuperior.catalog.dto;
 
-import com.devsuperior.catalog.domain.CategoryEntity;
+import com.devsuperior.catalog.entities.CategoryEntity;
 import lombok.*;
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.devsuperior.catalog.domain;
+package com.devsuperior.catalog.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
