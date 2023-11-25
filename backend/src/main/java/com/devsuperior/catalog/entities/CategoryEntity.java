@@ -1,20 +1,16 @@
 package com.devsuperior.catalog.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "category")
+@Table(name = "tb_category")
 public class CategoryEntity implements Serializable {
     private static final Long serialVersionUID = 1L;
 
@@ -25,19 +21,51 @@ public class CategoryEntity implements Serializable {
     private String name;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
 
     @PrePersist
     public void prePersist() {
-        createdAt = LocalDateTime.now();
+        createdAt = Instant.now();
     }
 
     @PreUpdate
     public void preUpdate() {
-        updatedAt = LocalDateTime.now();
+        updatedAt = Instant.now();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
