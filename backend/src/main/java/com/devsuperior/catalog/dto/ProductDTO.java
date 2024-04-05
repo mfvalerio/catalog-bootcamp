@@ -2,10 +2,6 @@ package com.devsuperior.catalog.dto;
 
 import com.devsuperior.catalog.entities.CategoryEntity;
 import com.devsuperior.catalog.entities.ProductEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -13,11 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public class ProductDTO implements Serializable {
+    public ProductDTO() {
+    }
+
+    public ProductDTO(Long id, String name, String description, Double price, String imgUrl, Instant date) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.date = date;
+    }
+
+    public ProductDTO(ProductEntity product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.description = product.getDescription();
+        this.price = product.getPrice();
+        this.imgUrl = product.getImgUrl();
+        this.date = product.getDate();
+    }
+
+    public ProductDTO(ProductEntity product, Set<CategoryEntity> categories) {
+        this(product);
+        categories.forEach(cat -> this.categories.add((new CategoryDTO(cat))));
+    }
+
     private static final Long serialVersionUID = 1L;
 
     private Long id;
@@ -34,17 +52,56 @@ public class ProductDTO implements Serializable {
 
     private List<CategoryDTO> categories = new ArrayList<>();
 
-    public ProductDTO(ProductEntity product) {
-        this.id = product.getId();
-        this.name = product.getName();
-        this.description = product.getDescription();
-        this.price = product.getPrice();
-        this.imgUrl = product.getImgUrl();
-        this.date = product.getDate();
+    public Long getId() {
+        return id;
     }
 
-    public ProductDTO(ProductEntity product, Set<CategoryEntity> categories) {
-        this(product);
-        categories.forEach(cat -> this.categories.add((new CategoryDTO(cat))));
+    public void setId(Long id) {
+        this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
+    }
+
+    public List<CategoryDTO> getCategories() {
+        return categories;
+    }
+
 }

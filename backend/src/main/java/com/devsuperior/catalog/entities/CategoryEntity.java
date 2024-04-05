@@ -1,18 +1,25 @@
 package com.devsuperior.catalog.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "tb_category")
 public class CategoryEntity implements Serializable {
     private static final Long serialVersionUID = 1L;
+
+    public CategoryEntity() {
+    }
+
+    public CategoryEntity(Long id, String name, Instant createdAt, Instant updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

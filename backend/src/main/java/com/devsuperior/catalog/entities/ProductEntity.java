@@ -7,11 +7,22 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "tb_product")
 public class ProductEntity {
+
+    public ProductEntity() {
+    }
+
+    public ProductEntity(Long id, String name, String description, Double price, String imgUrl, Instant date, Set<CategoryEntity> categories) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.date = date;
+        this.categories = categories;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
